@@ -39,6 +39,7 @@ font: inherit;
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
 }
 
 .cell:first-child,
@@ -59,6 +60,8 @@ font: inherit;
     border-bottom: none;
 }
 
+
+
 .cell.x::before,
 .cell.x::after {
     content: '';
@@ -66,6 +69,11 @@ font: inherit;
     width: calc(var(--mark-size) * 0.15);
     height: var(--mark-size);
     background-color: black;
+}
+
+.cell.x,
+.cell.circle {
+    cursor: not-allowed;
 }
 
 .cell.x::before {
@@ -90,6 +98,47 @@ font: inherit;
 }
 
 .cell.circle::after {
+    width: calc(var(--mark-size) * 0.7);
+    height: calc(var(--mark-size) * 0.7);
+    background-color: white;
+}
+
+
+
+.cell.hover-x::before,
+.cell.hover-x::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * 0.15);
+    height: var(--mark-size);
+    background-color: lightgrey;
+}
+
+.cell.hover-x::before {
+    transform: rotate(45deg);
+}
+
+.cell.hover-x::after {
+    transform: rotate(-45deg);
+}
+
+
+
+
+.cell.hover-circle::before,
+.cell.hover-circle::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.cell.hover-circle::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: lightgrey;
+}
+
+.cell.cell.hover-circle::after {
     width: calc(var(--mark-size) * 0.7);
     height: calc(var(--mark-size) * 0.7);
     background-color: white;
