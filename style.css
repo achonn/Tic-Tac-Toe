@@ -1,0 +1,38 @@
+/* CSS Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --cell-size: 100px
+}
+
+* {
+margin: 0;
+padding: 0;
+}
+
+body {
+line-height: 1.5;
+-webkit-font-smoothing: antialiased;
+}
+
+input, button, textarea, select {
+font: inherit;
+}
+
+.board {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: black;
+    border: 1px solid white;
+}
