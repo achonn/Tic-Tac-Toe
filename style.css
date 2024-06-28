@@ -18,10 +18,9 @@ line-height: 1.5;
 -webkit-font-smoothing: antialiased;
 }
 
-input, button, textarea, select {
-font: inherit;
-}
 
+
+/* Basic CSS */
 .board {
     width: 100vw;
     height: 100vh;
