@@ -61,14 +61,36 @@ line-height: 1.5;
 
 
 
-/* Styling X and O Click States */
+/* Styling Color */
 .cell.x::before,
-.cell.x::after {
+.cell.x::after,
+.cell.circle::before {
+    background-color: black;
+}
+
+
+.cell.circle::after,
+.cell.cell.hover-circle::after {
+    background-color: white;
+}
+
+.cell.hover-x::before,
+.cell.hover-x::after,
+.cell.hover-circle::before {
+    background-color: lightgrey;
+}
+
+
+
+/* Styling X and O Click/Hover States */
+.cell.x::before,
+.cell.x::after,
+.cell.hover-x::before,
+.cell.hover-x::after {
     content: '';
     position: absolute;
     width: calc(var(--mark-size) * 0.15);
     height: var(--mark-size);
-    background-color: black;
 }
 
 .cell.x,
@@ -76,53 +98,18 @@ line-height: 1.5;
     cursor: not-allowed;
 }
 
-.cell.x::before {
-    transform: rotate(45deg);
-}
-
-.cell.x::after {
-    transform: rotate(-45deg);
-}
-
-.cell.circle::before,
-.cell.circle::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-}
-
-.cell.circle::before {
-    width: var(--mark-size);
-    height: var(--mark-size);
-    background-color: black;
-}
-
-.cell.circle::after {
-    width: calc(var(--mark-size) * 0.7);
-    height: calc(var(--mark-size) * 0.7);
-    background-color: white;
-}
-
-
-
-/* Styling X and O Hover State */
-.cell.hover-x::before,
-.cell.hover-x::after {
-    content: '';
-    position: absolute;
-    width: calc(var(--mark-size) * 0.15);
-    height: var(--mark-size);
-    background-color: lightgrey;
-}
-
+.cell.x::before,
 .cell.hover-x::before {
     transform: rotate(45deg);
 }
 
+.cell.x::after,
 .cell.hover-x::after {
     transform: rotate(-45deg);
 }
 
+.cell.circle::before,
+.cell.circle::after,
 .cell.hover-circle::before,
 .cell.hover-circle::after {
     content: '';
@@ -130,16 +117,16 @@ line-height: 1.5;
     border-radius: 50%;
 }
 
+.cell.circle::before,
 .cell.hover-circle::before {
     width: var(--mark-size);
     height: var(--mark-size);
-    background-color: lightgrey;
 }
 
+.cell.circle::after,
 .cell.cell.hover-circle::after {
     width: calc(var(--mark-size) * 0.7);
     height: calc(var(--mark-size) * 0.7);
-    background-color: white;
 }
 
 
