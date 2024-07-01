@@ -20,21 +20,41 @@ A tic tac toe game made using HTML, CSS, and Javascript. The app uses a clean an
 
 <h2> How did I complete this project? </h2>
 
-<ol>
-  <li>
-    <strong>Separation of Concerns: </strong>The game logic is separated into <strong><em>'GameController'</em></strong>, while the UI handling and event binding are in <strong><em>'DisplayController'</em></strong>.     </li>
-  <li>
-    <strong>Clear Interface: <em>'DisplayController'</em></strong> provides a clear interface for manipulating the UI, which <strong><em>'GameController'</em></strong> uses to update the display based on game state        changes.
-  </li>
-  <li>
-    <strong>Modular Structure: </strong>This modular approach makes it easier to manage and understand each part of the code, enhancing maintainability and readability.
-  </li>
-  <li>
-    <strong>Single Responsibility: </strong>Each module is responsible for a specific part of the application, adhering to the single responsibility principle.
-  </li>
+This project implements a simple Tic-Tac-Toe game using HTML, CSS, and JavaScript. The game is split into three main modules for managing different aspects:
 
-  This structure ensures a clean separation of game logic from display logic, making the codebase more organized and easier to maintain.
-</ol>
+### 1. Game Board (`gameBoard.js`)
+
+The **Game Board** module handles the creation and management of the game board HTML structure (`board`) and individual cells (`cells`). Here's what it does:
+
+- **Initialization**: Sets up the game board and initializes event listeners for cell clicks and hover effects.
+- **Cell Operations**: Provides functions to mark cells with X or O, clear the board, and manage hover effects.
+- **Event Binding**: Binds click and hover events to the cells.
+
+### 2. Display Controller (`displayController.js`)
+
+The **Display Controller** module manages the user interface and display elements of the game. Here's what it does:
+
+- **Winning Messages**: Displays winning messages (`showWinningMessage`, `hideWinningMessage`) with animations.
+- **Game Visibility**: Controls the visibility of the game board and start menu (`showBoard`).
+- **Button Binding**: Binds actions to play and restart buttons (`bindPlayGameButton`, `bindRestartButton`).
+
+### 3. Game Controller (`gameController.js`)
+
+The **Game Controller** module handles the game logic and state management. Here's what it does:
+
+- **Game Initialization**: Starts the game, binds buttons to display actions, and initializes the game board.
+- **Game Logic**: Manages turns, checks for wins (`checkWin`), determines draws (`isDraw`), and handles click and hover events.
+- **State Management**: Tracks whose turn it is (`isXTurn`) and resets the game state.
+
+### How to Use
+
+1. **Setup**: Include `gameBoard.js`, `displayController.js`, and `gameController.js` in your HTML file. Ensure CSS styles from `styles.css` are applied.
+2. **Start Game**: Click "Play Game" to begin.
+3. **Gameplay**: Click on cells to place your mark (X or O). The game will display winning messages or declare a draw when appropriate.
+4. **Restart**: Click "Restart" to reset the game and start again.
+
+
+
 
 
 
