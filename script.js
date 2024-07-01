@@ -89,6 +89,9 @@ document.addEventListener('DOMContentLoaded', resetGame);
 
 
 const playGame = document.getElementById('playGame');
+const startMenu = document.querySelector('.start-menu');
+
 playGame.addEventListener('click', function() {
-    board.classList.add('visible')
+    board.classList.add('visible');
+    startMenu.style.display = 'none';
 });
