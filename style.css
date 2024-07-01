@@ -13,6 +13,9 @@
     --light-blue: #bcdbf8;
     --pink: #c5a0d7;
     --orange: #dcbf3f;
+    --medium-purple: #43115b;
+    --medium-purple-hover: #532272;
+    --dark-purple: #2b0040;
     --fredoka: "Fredoka", Arial, Helvetica, sans-serif;
     --border-radius-value: 7px;
     --ease-in-out: all 0.3s ease-in-out;
@@ -94,12 +97,16 @@ font-family: var(--fredoka);
 
 .board {
     display: none;
+    gap: 15px;
     grid-template-columns: repeat(3, auto);
+    padding: 60px 80px 100px 80px;
+    background-color: var(--dark-purple);
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 200px;
+    bottom: 200px;
+    left:600px;
+    right: 600px;
+    border-radius: 10px;
     justify-content: center;
     align-content: center;
     animation: fadeIn 1s ease-in;
@@ -112,12 +119,20 @@ font-family: var(--fredoka);
 .cell {
     width: var(--cell-size);
     height: var(--cell-size);
-    border: 1px solid black;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--medium-purple);
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     cursor: pointer;
+    transition: .5s;
+}
+
+.cell:hover {
+    background: var(--medium-purple-hover);
+    transform: scale(1.05);
 }
 
 .cell:first-child,
@@ -153,13 +168,13 @@ font-family: var(--fredoka);
 .cell.x::before,
 .cell.x::after,
 .cell.circle::before {
-    background-color: black;
+    background-color: white;
 }
 
 
 .cell.circle::after,
 .cell.cell.hover-circle::after {
-    background-color: white;
+    background-color: var(--medium-purple);
 }
 
 .cell.hover-x::before,
