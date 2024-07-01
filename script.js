@@ -3,10 +3,6 @@ const GameBoard = (() => {
     const board = document.getElementById('board');
     const cells = document.querySelectorAll('.cell');
 
-    const init = () => {
-        // Initialize or set up the game board here
-    };
-
     const clear = () => {
         cells.forEach(cell => {
             cell.classList.remove('x', 'circle', 'hover-x', 'hover-circle');
@@ -43,7 +39,6 @@ const GameBoard = (() => {
     };
 
     return {
-        init,
         clear,
         markCell,
         addHoverEffect,
@@ -105,7 +100,6 @@ const GameController = (() => {
     let isXTurn = true;
 
     const start = () => {
-        GameBoard.init();
         DisplayController.bindPlayGameButton(DisplayController.showBoard);
         DisplayController.bindRestartButton(reset);
         reset();
