@@ -36,6 +36,8 @@ const GameBoard = (() => {
 
     const bindCellHover = (handleMouseEnter, handleMouseLeave) => {
         cells.forEach(cell => {
+            cell.removeEventListener('mouseenter', handleMouseEnter);
+            cell.removeEventListener('mouseleave', handleMouseLeave);
             cell.addEventListener('mouseenter', handleMouseEnter);
             cell.addEventListener('mouseleave', handleMouseLeave);
         });
