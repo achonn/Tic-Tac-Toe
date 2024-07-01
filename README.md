@@ -23,10 +23,17 @@ A tic tac toe game made using HTML, CSS, and Javascript. The app uses a clean an
 <h2> How did I complete this project? </h2>
 
 <ol>
-  <li><strong>Separation of Concerns: </strong>The game logic is separated into <strong><em>'GameController'</em></strong>, while the UI handling and event binding are in <strong><em>'DisplayController'</em></strong>.</li>
-  <li><strong>Clear Interface: <em>'DisplayController'</em></strong> provides a clear interface for manipulating the UI, which <strong><em>'GameController'</em></strong> uses to update the display based on game state changes.</li>
-  <li><strong>Modular Structure: </strong>This modular approach makes it easier to manage and understand each part of the code, enhancing maintainability and readability.</li>
-  <li><strong>Single Responsibility: </strong>Each module is responsible for a specific part of the application, adhering to the single responsibility principle.</li>
+  <li>
+    <strong>Separation of Concerns: </strong>The game logic is separated into <strong><em>'GameController'</em></strong>, while the UI handling and event binding are in <strong><em>'DisplayController'</em></strong>.     </li>
+  <li>
+    <strong>Clear Interface: <em>'DisplayController'</em></strong> provides a clear interface for manipulating the UI, which <strong><em>'GameController'</em></strong> uses to update the display based on game state        changes.
+  </li>
+  <li>
+    <strong>Modular Structure: </strong>This modular approach makes it easier to manage and understand each part of the code, enhancing maintainability and readability.
+  </li>
+  <li>
+    <strong>Single Responsibility: </strong>Each module is responsible for a specific part of the application, adhering to the single responsibility principle.
+  </li>
 
   This structure ensures a clean separation of game logic from display logic, making the codebase more organized and easier to maintain.
 </ol>
