@@ -2,6 +2,8 @@ const GameBoard = (() => {
     const board = document.getElementById('board');
     const cells = document.querySelectorAll('.cell');
 
+    const getBoard = () => board;
+
     const clear = () => {
         cells.forEach(cell => {
             cell.classList.remove('x', 'circle', 'hover-x', 'hover-circle');
@@ -38,6 +40,7 @@ const GameBoard = (() => {
     };
 
     return {
+        getBoard,
         clear,
         markCell,
         addHoverEffect,
@@ -70,6 +73,7 @@ const DisplayController = (() => {
     };
 
     const showBoard = () => {
+        const board = GameBoard.board();
         board.classList.add('visible');
         startMenu.style.display = 'none';
     };
