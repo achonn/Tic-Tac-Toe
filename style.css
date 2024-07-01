@@ -139,9 +139,6 @@ line-height: 1.5;
     bottom: 0;
     left: 0;
     right: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: black;
     color: white;
     font-size: 5rem;
@@ -163,4 +160,7 @@ line-height: 1.5;
 
 .winning-message.show {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
