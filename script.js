@@ -18,28 +18,31 @@ const winConditions = [
 
 function resetGame() {
     winningMessageElement.classList.remove('show');
+    overlay.classList.remove('overlay-show');
+    isXTurn = true;
     cells.forEach(cell => {
         cell.classList.remove('x');
         cell.classList.remove('circle');
     })
+    startGame();
 }
 
-restartButton.addEventListener('click', resetGame);
+function startGame() {
+    cells.forEach(cell => {
+        cell.addEventListener('click', handleClick, {once: true});
 
-cells.forEach(cell => {
-    cell.addEventListener('click', handleClick, {once: true});
+        cell.addEventListener('mouseenter', function() {
+            if (!cell.classList.contains('x') && !cell.classList.contains('circle')) {
+                cell.classList.add(isXTurn ? 'hover-x' : 'hover-circle');
+            }
+        });
 
-    cell.addEventListener('mouseenter', function() {
-        if (!cell.classList.contains('x') && !cell.classList.contains('circle')) {
-            cell.classList.add(isXTurn ? 'hover-x' : 'hover-circle');
-        }
-    });
-
-    cell.addEventListener('mouseleave', () => {
-        cell.classList.remove('hover-x');
-        cell.classList.remove('hover-circle');
+        cell.addEventListener('mouseleave', () => {
+            cell.classList.remove('hover-x');
+            cell.classList.remove('hover-circle');
+        })
     })
-})
+}
 
 function handleClick(e) {
     const cell = e.target;
@@ -100,3 +103,5 @@ playGame.addEventListener('click', function() {
     board.classList.add('visible');
     startMenu.style.display = 'none';
 });
+
+restartButton.addEventListener('click', resetGame);
