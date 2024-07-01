@@ -109,7 +109,7 @@ font-family: var(--fredoka);
     border-radius: 10px;
     justify-content: center;
     align-content: center;
-    animation: fadeIn 1s ease-in;
+    animation: fadeIn .5s ease-in;
 }
 
 .visible {
@@ -238,34 +238,48 @@ font-family: var(--fredoka);
 .winning-message {
     display: none;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 250px;
+    bottom: 500px;
+    left: 650px;
+    right: 650px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    color: white;
-    font-size: 5rem;
+    background-color: var(--light-blue);
+    color: black;
+    font-size: 3rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
 }
 
 .winning-message button {
-    font-size: 3rem;
-    background-color: white;
+    font-size: 1.5rem;
+    background-color: var(--pink);
     border: 1px solid black;
     padding: .25em .5em;
     cursor: pointer;
+    transition: .5s;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 30px;
+    box-shadow: 1px 1px 15px 1px rgba(0,0,0,0.6);
 }
 
 .winning-message button:hover {
-    background-color: black;
-    border-color: white;
-    color: white;
+    transform: scale(1.1);
 }
 
 .winning-message.show {
     display: flex;
+}
+
+
+
+/* Styling Overlay */
+.overlay {
+
 }
 
 @keyframes fadeIn {

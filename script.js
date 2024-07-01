@@ -44,6 +44,7 @@ cells.forEach(cell => {
 function handleClick(e) {
     const cell = e.target;
     let currentClass = isXTurn ? 'x' : 'circle';
+
     placeMark(cell, currentClass);
 
     if (checkwin(currentClass)) {
@@ -56,6 +57,7 @@ function handleClick(e) {
 
 function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
+    cell.style.animation = 'fadeIn .5s ease-in';
 }
 
 function swapTurns() {
@@ -77,6 +79,7 @@ function endGame(draw) {
         winningMessageTextElement.innerText = `${isXTurn ? "X's" : "O's"} Wins`;
     }
     winningMessageElement.classList.add('show');
+    winningMessageElement.style.animation = 'fadeIn .5s ease-in';
 }
 
 function isDraw() {
