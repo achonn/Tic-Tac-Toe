@@ -1,4 +1,3 @@
-// gameBoard.js
 const GameBoard = (() => {
     const board = document.getElementById('board');
     const cells = document.querySelectorAll('.cell');
@@ -49,7 +48,6 @@ const GameBoard = (() => {
 })();
 
 
-// displayController.js
 
 const DisplayController = (() => {
     const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
@@ -94,7 +92,6 @@ const DisplayController = (() => {
 })();
 
 
-// gameController.js
 
 const GameController = (() => {
     let isXTurn = true;
@@ -171,6 +168,8 @@ const GameController = (() => {
         start
     };
 })();
+
+
 
 // Initialize the game
 GameController.start();
