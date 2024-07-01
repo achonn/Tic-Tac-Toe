@@ -16,13 +16,15 @@ const winConditions = [
 ];
 
 
-restartButton.addEventListener('click', () => {
+function resetGame() {
     winningMessageElement.classList.remove('show');
     cells.forEach(cell => {
         cell.classList.remove('x');
         cell.classList.remove('circle');
     })
-})
+}
+
+restartButton.addEventListener('click', resetGame);
 
 cells.forEach(cell => {
     cell.addEventListener('click', handleClick, {once: true});
@@ -82,3 +84,5 @@ function isDraw() {
         return cell.classList.contains('x') || cell.classList.contains('circle');
     })
 }
+
+document.addEventListener('DOMContentLoaded', resetGame);
