@@ -12,12 +12,11 @@ A tic tac toe game made using HTML, CSS, and Javascript. The app uses a clean an
 
 <h2> What have I learned </h2>
 
-<li> I've learned how to use keyframes to create unique animations </li>
-<li> I've applied Closures to this project </li>
-<li> I've applied Module Patterns to this project </li>
-<li> I've applied Factory Functions to this project  </li>
-<li> I've applied IIFEs to this project </li>
-<li> Learned about the pointer events CSS style </li>
+<li> Utilized keyframes to create unique animations </li>
+<li> Applied Closures to this project </li>
+<li> Applied Module Patterns to this project </li>
+<li> Applied Factory Functions to this project  </li>
+<li> Applied IIFEs to this project </li>
 
 <h2> How did I complete this project? </h2>
 
