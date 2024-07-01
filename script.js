@@ -126,11 +126,11 @@ const GameController = (() => {
     };
 
     const handleMouseEnter = (e) => {
-        DisplayController.addHoverEffect(e.target, isXTurn);
+        GameBoard.addHoverEffect(e.target, isXTurn);
     };
 
     const handleMouseLeave = (e) => {
-        DisplayController.removeHoverEffect(e.target);
+        GameBoard.removeHoverEffect(e.target);
     };
 
     const swapTurns = () => {
