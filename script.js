@@ -4,6 +4,8 @@ const GameBoard = (() => {
 
     const getBoard = () => board;
 
+    const getCells = () => cells;
+
     const clear = () => {
         cells.forEach(cell => {
             cell.classList.remove('x', 'circle', 'hover-x', 'hover-circle');
@@ -41,6 +43,7 @@ const GameBoard = (() => {
 
     return {
         getBoard,
+        getCells,
         clear,
         markCell,
         addHoverEffect,
@@ -99,6 +102,7 @@ const DisplayController = (() => {
 
 const GameController = (() => {
     let isXTurn = true;
+    const cells = GameBoard.getCells();
 
     const start = () => {
         DisplayController.bindPlayGameButton(DisplayController.showBoard);
@@ -142,7 +146,6 @@ const GameController = (() => {
     };
 
     const checkWin = (currentClass) => {
-        const cells = document.querySelectorAll('.cell');
         const winConditions = [
             [0, 1, 2],
             [3, 4, 5], 
@@ -162,7 +165,6 @@ const GameController = (() => {
     };
 
     const isDraw = () => {
-        const cells = document.querySelectorAll('.cell');
         return Array.from(cells).every(cell => {
             return cell.classList.contains('x') || cell.classList.contains('circle');
         });
