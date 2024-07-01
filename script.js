@@ -86,3 +86,9 @@ function isDraw() {
 }
 
 document.addEventListener('DOMContentLoaded', resetGame);
+
+
+const playGame = document.getElementById('playGame');
+playGame.addEventListener('click', function() {
+    board.classList.add('visible')
+});
