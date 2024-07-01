@@ -73,7 +73,7 @@ const DisplayController = (() => {
     };
 
     const showBoard = () => {
-        const board = GameBoard.board();
+        const board = GameBoard.getBoard();
         board.classList.add('visible');
         startMenu.style.display = 'none';
     };
