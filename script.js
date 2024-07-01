@@ -172,4 +172,6 @@ const GameController = (() => {
 
 
 // Initialize the game
-GameController.start();
+document.addEventListener('DOMContentLoaded', () => {
+    GameController.start();
+})
