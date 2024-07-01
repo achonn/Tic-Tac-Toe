@@ -251,6 +251,7 @@ font-family: var(--fredoka);
     border-radius: 10px;
     border: none;
     font-weight: bold;
+    z-index: 2;
 }
 
 .winning-message button {
@@ -279,7 +280,21 @@ font-family: var(--fredoka);
 
 /* Styling Overlay */
 .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+}
 
+.overlay-show {
+    opacity: 1;
+    opacity: 1;
+    pointer-events: all;
+    background-color: rgba(0,0,0,0.6);
 }
 
 @keyframes fadeIn {

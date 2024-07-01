@@ -79,6 +79,7 @@ function endGame(draw) {
         winningMessageTextElement.innerText = `${isXTurn ? "X's" : "O's"} Wins`;
     }
     winningMessageElement.classList.add('show');
+    overlay.classList.add('overlay-show');
     winningMessageElement.style.animation = 'fadeIn .5s ease-in';
 }
 
@@ -93,6 +94,7 @@ document.addEventListener('DOMContentLoaded', resetGame);
 
 const playGame = document.getElementById('playGame');
 const startMenu = document.querySelector('.start-menu');
+const overlay = document.querySelector('.overlay')
 
 playGame.addEventListener('click', function() {
     board.classList.add('visible');
