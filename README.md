@@ -8,7 +8,6 @@ A tic tac toe game made using HTML, CSS, and Javascript. The app uses a clean an
 
 <h2> Links </h2>
 
-<li> Link to task: https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe </li>
 <li> Link to live demo: https://achonn.github.io/Tic-Tac-Toe/ </li>
 
 <h2> What have I learned </h2>
