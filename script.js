@@ -1,107 +1,165 @@
-const board = document.getElementById('board');
-const cells = document.querySelectorAll('.cell');
-let isXTurn = true;
-const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
-const winningMessageElement = document.getElementById('winningMessage');
-const restartButton = document.getElementById('restartButton');
-const winConditions = [
-    [0,1,2],
-    [3,4,5], 
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6],
-];
+// Display Controller Module
+const DisplayController = (() => {
+    const board = document.getElementById('board');
+    const cells = document.querySelectorAll('.cell');
+    const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
+    const winningMessageElement = document.getElementById('winningMessage');
+    const playGame = document.getElementById('playGame');
+    const startMenu = document.querySelector('.start-menu');
+    const overlay = document.querySelector('.overlay');
+    const restartButton = document.getElementById('restartButton');
 
+    const showWinningMessage = (message) => {
+        winningMessageTextElement.innerText = message;
+        winningMessageElement.classList.add('show');
+        overlay.classList.add('overlay-show');
+        winningMessageElement.style.animation = 'fadeIn .5s ease-in';
+    };
 
-function resetGame() {
-    winningMessageElement.classList.remove('show');
-    overlay.classList.remove('overlay-show');
-    isXTurn = true;
-    cells.forEach(cell => {
-        cell.classList.remove('x');
-        cell.classList.remove('circle');
-    })
-    startGame();
-}
+    const hideWinningMessage = () => {
+        winningMessageElement.classList.remove('show');
+        overlay.classList.remove('overlay-show');
+    };
 
-function startGame() {
-    cells.forEach(cell => {
-        cell.addEventListener('click', handleClick, {once: true});
+    const placeMark = (cell, currentClass) => {
+        cell.classList.add(currentClass);
+        cell.style.animation = 'fadeIn .5s ease-in';
+    };
 
-        cell.addEventListener('mouseenter', function() {
-            if (!cell.classList.contains('x') && !cell.classList.contains('circle')) {
-                cell.classList.add(isXTurn ? 'hover-x' : 'hover-circle');
-            }
+    const clearBoard = () => {
+        cells.forEach(cell => {
+            cell.classList.remove('x', 'circle', 'hover-x', 'hover-circle');
         });
+    };
 
-        cell.addEventListener('mouseleave', () => {
-            cell.classList.remove('hover-x');
-            cell.classList.remove('hover-circle');
-        })
-    })
-}
+    const addHoverEffect = (cell, isXTurn) => {
+        if (!cell.classList.contains('x') && !cell.classList.contains('circle')) {
+            cell.classList.add(isXTurn ? 'hover-x' : 'hover-circle');
+        }
+    };
 
-function handleClick(e) {
-    const cell = e.target;
-    let currentClass = isXTurn ? 'x' : 'circle';
+    const removeHoverEffect = (cell) => {
+        cell.classList.remove('hover-x', 'hover-circle');
+    };
 
-    placeMark(cell, currentClass);
+    const initGameBoard = (handleClick, handleMouseEnter, handleMouseLeave) => {
+        cells.forEach(cell => {
+            cell.removeEventListener('click', handleClick);
+            cell.addEventListener('click', handleClick, { once: true });
 
-    if (checkwin(currentClass)) {
-        endGame(false)
-    } else if (isDraw()) {
-        endGame(true);
-    } else swapTurns();
-    
-}
-
-function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass);
-    cell.style.animation = 'fadeIn .5s ease-in';
-}
-
-function swapTurns() {
-    isXTurn = !isXTurn;
-}
-
-function checkwin(currentClass) {
-    return winConditions.some(condition => {
-        return condition.every(index => {
-            return cells[index].classList.contains(currentClass);
+            cell.addEventListener('mouseenter', handleMouseEnter);
+            cell.addEventListener('mouseleave', handleMouseLeave);
         });
-    });
-}
+    };
 
-function endGame(draw) {
-    if (draw) {
-        winningMessageTextElement.innerText = 'DRAW!';
-    } else {
-        winningMessageTextElement.innerText = `${isXTurn ? "X's" : "O's"} Wins`;
-    }
-    winningMessageElement.classList.add('show');
-    overlay.classList.add('overlay-show');
-    winningMessageElement.style.animation = 'fadeIn .5s ease-in';
-}
+    const showBoard = () => {
+        board.classList.add('visible');
+        startMenu.style.display = 'none';
+    };
 
-function isDraw() {
-    return Array.from(cells).every(cell => {
-        return cell.classList.contains('x') || cell.classList.contains('circle');
-    })
-}
+    const bindPlayGameButton = (callback) => {
+        playGame.addEventListener('click', callback);
+    };
 
-document.addEventListener('DOMContentLoaded', resetGame);
+    const bindRestartButton = (callback) => {
+        restartButton.addEventListener('click', callback);
+    };
+
+    return {
+        showWinningMessage,
+        hideWinningMessage,
+        placeMark,
+        clearBoard,
+        addHoverEffect,
+        removeHoverEffect,
+        initGameBoard,
+        showBoard,
+        bindPlayGameButton,
+        bindRestartButton
+    };
+})();
 
 
-const playGame = document.getElementById('playGame');
-const startMenu = document.querySelector('.start-menu');
-const overlay = document.querySelector('.overlay')
 
-playGame.addEventListener('click', function() {
-    board.classList.add('visible');
-    startMenu.style.display = 'none';
-});
+// Game Controller Module
+const GameController = (() => {
+    const winConditions = [
+        [0, 1, 2],
+        [3, 4, 5], 
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
 
-restartButton.addEventListener('click', resetGame);
+    let isXTurn = true;
+
+    const resetGame = () => {
+        isXTurn = true;
+        DisplayController.hideWinningMessage();
+        DisplayController.clearBoard();
+        startGame();
+    };
+
+    const startGame = () => {
+        DisplayController.initGameBoard(handleClick, handleMouseEnter, handleMouseLeave);
+    };
+
+    const handleClick = (e) => {
+        const cell = e.target;
+        const currentClass = isXTurn ? 'x' : 'circle';
+
+        DisplayController.placeMark(cell, currentClass);
+
+        if (checkWin(currentClass)) {
+            DisplayController.showWinningMessage(`${isXTurn ? "X's" : "O's"} Wins`);
+        } else if (isDraw()) {
+            DisplayController.showWinningMessage('DRAW!');
+        } else {
+            swapTurns();
+        }
+    };
+
+    const handleMouseEnter = (e) => {
+        DisplayController.addHoverEffect(e.target, isXTurn);
+    };
+
+    const handleMouseLeave = (e) => {
+        DisplayController.removeHoverEffect(e.target);
+    };
+
+    const swapTurns = () => {
+        isXTurn = !isXTurn;
+    };
+
+    const checkWin = (currentClass) => {
+        const cells = document.querySelectorAll('.cell');
+        return winConditions.some(condition => {
+            return condition.every(index => {
+                return cells[index].classList.contains(currentClass);
+            });
+        });
+    };
+
+    const isDraw = () => {
+        const cells = document.querySelectorAll('.cell');
+        return Array.from(cells).every(cell => {
+            return cell.classList.contains('x') || cell.classList.contains('circle');
+        });
+    };
+
+    const init = () => {
+        DisplayController.bindPlayGameButton(DisplayController.showBoard);
+        DisplayController.bindRestartButton(resetGame);
+        document.addEventListener('DOMContentLoaded', resetGame);
+    };
+
+    return {
+        init
+    };
+})();
+
+// Initialize the game
+GameController.init();
