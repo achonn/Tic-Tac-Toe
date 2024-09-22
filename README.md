@@ -10,7 +10,7 @@ A tic tac toe game made using HTML, CSS, and Javascript. The app uses a clean an
 
 <li> Link to live demo: https://achonn.github.io/Tic-Tac-Toe/ </li>
 
-<h2> What have I learned </h2>
+<h2> Concepts Applied </h2>
 
 <li> Utilized keyframes to create unique animations </li>
 <li> Applied Closures to this project </li>
